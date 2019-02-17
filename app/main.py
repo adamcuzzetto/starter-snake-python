@@ -39,7 +39,8 @@ def start():
             initialize your snake state here using the
             request's data if necessary.
     """
-    self.size = data.board.width
+    startInfo = json.loads(data)
+    self.size = startInfo["width"]
     print(json.dumps(data))
 
     color = "#FF0090"
