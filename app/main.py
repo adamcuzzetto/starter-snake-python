@@ -57,10 +57,11 @@ def move():
     """
     print(json.dumps(data))
  
-    directions = ['up', 'down', 'left', 'right']
-    direction = directions[3]
+    #directions = ['up', 'down', 'left', 'right']
+    #direction = random.choice(directions)
 
-    return move_response(direction)
+    #return move_response(direction)
+    return 'left'
 
 
 @bottle.post('/end')
