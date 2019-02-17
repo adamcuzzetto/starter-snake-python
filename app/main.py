@@ -39,8 +39,8 @@ def start():
             initialize your snake state here using the
             request's data if necessary.
     """
-    startInfo = json.loads(data)
-    self.size = startInfo["width"]
+    #startInfo = json.load(data)
+    #self.size = startInfo[turn[board[width]]]
     print(json.dumps(data))
 
     color = "#FF0090"
@@ -57,6 +57,8 @@ def move():
             snake AI must choose a direction to move in.
     
     """
+    #currentInfo = json.load(data)
+    
     print(json.dumps(data))
  
     directions = ['up', 'down', 'left', 'right']
