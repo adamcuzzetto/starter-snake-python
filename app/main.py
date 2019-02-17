@@ -49,7 +49,7 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-
+    self.size = data.board.height
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
