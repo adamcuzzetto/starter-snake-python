@@ -24,7 +24,7 @@ class Map():
         numSnakes = len(data['board']['snakes'])# - 1
         print(numSnakes)
         for l in range(0, numSnakes):
-            snakeLength = len(data['board']['snakes'][l])# - 1
+            snakeLength = len(data['board']['snakes'][l]) - 1
             print(snakeLength)
             print(data['board']['snakes'][0]['body'][0]['x'])
             x = data['board']['snakes'][l]['body'][0]['x']
