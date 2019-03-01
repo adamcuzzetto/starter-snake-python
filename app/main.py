@@ -5,6 +5,7 @@ import bottle
 import getFood
 from getFood import Map
 from statemachine import StateMachine, State
+#from snakeStates import SnakeStates
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -36,7 +37,8 @@ def ping():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-
+    #snakeState = snakeState()
+    print("WE GOT PAST BOIS")
     """
     TODO: If you intend to have a stateful snake AI,
             initialize your snake state here using the
@@ -65,24 +67,8 @@ def move():
     status = ['empty', 'food', 'snake', 'potentialsnake']
     print(json.dumps(data))
     directions = ['up', 'down', 'left', 'right']
-    xhead = data['board']['snakes'][0]['body'][0]['x']
-    yhead = data['board']['snakes'][0]['body'][0]['y']
-    xneck = data['board']['snakes'][0]['body'][1]['x']
-    yneck = data['board']['snakes'][0]['body'][1]['y']
-    curDirection = getDirection(data)
-    if (xhead == 0 or xhead == size) and (curDirection == 2 or curDirection == 3):
-        if yhead < size / 2:
-            direction = directions[1]
-        if yhead >= size / 2:
-            direction = directions[0]
-    elif (yhead == 0 or yhead == size) and (curDirection == 0 or curDirection == 1):
-        if xhead < size / 2:
-            direction = directions[3]
-        if xhead >= size / 2:
-            direction = directions[2]
-    
-    else: direction = directions[curDirection]
-
+    curDirection = getCurDirection(data)
+    direction = turnDirection(curDirection)
     return move_response(direction)
 
 
@@ -107,7 +93,7 @@ def distance(x1, x2, y1, y2):
         ydistance = ydistance * -1
     totaldistance = xdistance + ydistance
     return totaldistance
-def getDirection(data):
+def getCurDirection(data):
     xhead = data['board']['snakes'][0]['body'][0]['x']
     yhead = data['board']['snakes'][0]['body'][0]['y']
     xneck = data['board']['snakes'][0]['body'][1]['x']
@@ -130,6 +116,24 @@ def getDirection(data):
     elif xhead == size:
         curDirection = 3
     return curDirection
+
+def turnDirection(curDirectino):
+    xhead = data['board']['snakes'][0]['body'][0]['x']
+    yhead = data['board']['snakes'][0]['body'][0]['y']
+    xneck = data['board']['snakes'][0]['body'][1]['x']
+    yneck = data['board']['snakes'][0]['body'][1]['y']
+    if (xhead == 0 or xhead == size) and (curDirection == 2 or curDirection == 3):
+        if yhead < size / 2:
+            direction = directions[1]
+        if yhead >= size / 2:
+            direction = directions[0]
+    elif (yhead == 0 or yhead == size) and (curDirection == 0 or curDirection == 1):
+        if xhead < size / 2:
+            direction = directions[3]
+        if xhead >= size / 2:
+            direction = directions[2]
+    else: direction = directions[curDirection]
+    return direction
 
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
