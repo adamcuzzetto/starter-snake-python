@@ -4,7 +4,7 @@ import random
 import bottle
 import getFood
 from getFood import Map
-from statemachine import StateMachine, State
+#from statemachine import StateMachine, State
 #from snakeStates import SnakeStates
 
 from api import ping_response, start_response, move_response, end_response
