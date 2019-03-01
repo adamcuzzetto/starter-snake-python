@@ -68,7 +68,7 @@ def move():
     print(json.dumps(data))
     directions = ['up', 'down', 'left', 'right']
     curDirection = getCurDirection(data)
-    direction = turnDirection(curDirection)
+    direction = turnDirection(curDirection, data)
     return move_response(direction)
 
 
@@ -117,7 +117,7 @@ def getCurDirection(data):
         curDirection = 3
     return curDirection
 
-def turnDirection(curDirectino):
+def turnDirection(curDirection, data):
     xhead = data['board']['snakes'][0]['body'][0]['x']
     yhead = data['board']['snakes'][0]['body'][0]['y']
     xneck = data['board']['snakes'][0]['body'][1]['x']
