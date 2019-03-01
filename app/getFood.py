@@ -1,13 +1,6 @@
 class Map():
-    #creates empty grid
     #0 is empty, 1 is food, 2 is snake, 3 is potential snake
     def makeMap(self, data, size):
-        # layout = []
-        # for i in range(0, size):
-            # column = []
-            # for j in range(0, size):
-                # column.append(0)
-            # layout.append(column)
         sizeFull = size + 1
         layout = [[0 for x in range(0, sizeFull)] for y in range(0, sizeFull)]
         for n in range(0, sizeFull):
