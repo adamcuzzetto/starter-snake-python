@@ -122,6 +122,7 @@ def turnDirection(curDirection, data):
     yhead = data['board']['snakes'][0]['body'][0]['y']
     xneck = data['board']['snakes'][0]['body'][1]['x']
     yneck = data['board']['snakes'][0]['body'][1]['y']
+    size = data['board']['width'] - 1
     if (xhead == 0 or xhead == size) and (curDirection == 2 or curDirection == 3):
         if yhead < size / 2:
             direction = directions[1]
